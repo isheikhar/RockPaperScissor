@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    
+</html>
+<script>
+    function computerPlay(){
+        let randomNumber = (3 * Math.random());
+        switch(Math.ceil(randomNumber)){
+            case 1:
+                return "rock";
+                break;
+            case 2:
+                return "paper";
+                break;
+            default:
+                return "scissor";
+        }
+
+    }
+    //console.log(computerPlay());   
+
+    function playRound(playerSelection, computerSelection){
+        switch(playerSelection)
+        {
+            case "rock":    
+                if(computerSelection === "paper"){
+                return computerSelection;
+                }
+                else{ 
+                return playerSelection;
+                }
+                break; 
+            case "paper":    
+                if(computerSelection === "scissor"){
+                return computerSelection;
+                }
+                else{ 
+                return playerSelection;
+                }
+                break;
+            case "scissor":
+                if(computerSelection === "rock"){
+                return computerSelection;
+                }
+                else{ 
+                return playerSelection;
+                }
+                break;
+        }
+    }
+
+    function game(){
+        
+        for(let i=0; i<5; i++){
+            const playerInput = prompt("Rock, Paper or Scissor?", "Rock")
+            if (playerInput){
+                const playerChoice = playerInput.toLowerCase();
+                const computerChoice = computerPlay();
+                if(playerChoice === computerChoice){
+                    console.log("Game Tied!");
+                }
+                else{
+                    let result = playRound(playerChoice, computerChoice); 
+                    if(result === playerChoice){
+                        console.log("Congratulations! You won!");
+                        console.log("Computer Choice was " + computerChoice.toUpperCase());
+                    }
+                    else{
+                        console.log("You lost! Try again!");
+                        console.log("Computer Choice was " + computerChoice.toUpperCase());
+                    }
+                }
+            }
+            else{
+                console.log("There is an error! Please try again!");
+            } 
+        }   
+    }
+
+</script>
